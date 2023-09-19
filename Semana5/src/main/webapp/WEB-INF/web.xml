@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet>
+        <servlet-name>JavaError</servlet-name>
+        <servlet-class>br.ufjf.semana5.JavaError</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Menu</servlet-name>
+        <servlet-class>br.ufjf.semana5.Menu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Sair</servlet-name>
+        <servlet-class>br.ufjf.semana5.Sair</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JavaError</servlet-name>
+        <url-pattern>/JavaError</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Menu</servlet-name>
+        <url-pattern>/Menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Sair</servlet-name>
+        <url-pattern>/Sair</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/erroJava.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erroHtml.html</location>
+    </error-page>
+</web-app>
