@@ -4,7 +4,8 @@
  */
 package br.ufjf.semana5;
 
-import jakarta.servlet.ServletConfig;
+import br.ufjf.semana5.model.DaoUsuario;
+import br.ufjf.semana5.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  *
@@ -106,18 +108,20 @@ public class Menu extends HttpServlet {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
-        ServletConfig servletConfig = getServletConfig();
-        String dbUsername = (String) servletConfig.getInitParameter("dbUsername");
-        String dbPassword = (String) servletConfig.getInitParameter("dbPassword");
+        DaoUsuario daoUsuario = new DaoUsuario(1, "ana", "1234");
+        List<Usuario> usuarios = daoUsuario.buscarTodos();
 
-        if (dbUsername.equals(username) && dbPassword.equals(password)) {
-            session.setAttribute("loggedUser", username);
-            session.removeAttribute("message");
-            processRequest(request, response);
-        } else {
-            session.setAttribute("message", "As credenciais são inválidas!");
-            response.sendRedirect("./index.jsp");
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNome().equals(username) && usuario.getSenha().equals(password)) {
+                session.setAttribute("loggedUser", username);
+                session.removeAttribute("message");
+                processRequest(request, response);
+                break;
+            }
         }
+
+        session.setAttribute("message", "As credenciais são inválidas!");
+        response.sendRedirect("./index.jsp");
     }
 
     /**
