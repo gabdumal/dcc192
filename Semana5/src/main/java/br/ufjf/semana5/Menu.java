@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  *
@@ -108,20 +107,17 @@ public class Menu extends HttpServlet {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
-        DaoUsuario daoUsuario = new DaoUsuario(1, "ana", "1234");
-        List<Usuario> usuarios = daoUsuario.buscarTodos();
+        DaoUsuario daoUsuario = new DaoUsuario(1, "ana", "uva");
+        Usuario usuario = daoUsuario.buscar(username);
 
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNome().equals(username) && usuario.getSenha().equals(password)) {
-                session.setAttribute("loggedUser", username);
-                session.removeAttribute("message");
-                processRequest(request, response);
-                break;
-            }
+        if (usuario != null && usuario.getSenha().equals(password)) {
+            session.setAttribute("loggedUser", username);
+            session.removeAttribute("message");
+            processRequest(request, response);
+        } else {
+            session.setAttribute("message", "As credenciais são inválidas!");
+            response.sendRedirect("./index.jsp");
         }
-
-        session.setAttribute("message", "As credenciais são inválidas!");
-        response.sendRedirect("./index.jsp");
     }
 
     /**

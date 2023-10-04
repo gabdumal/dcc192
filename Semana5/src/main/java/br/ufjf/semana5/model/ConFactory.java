@@ -22,10 +22,10 @@ public class ConFactory {
         switch (banco) {
             case MYSQL:
                 Class.forName("org.gjt.mm.mysql.Driver");
-                return DriverManager.getConnection("jdbc:mysql://localhost:3306/semana5?zeroDateTimeBehavior=convertToNull", nome, senha);
+                return DriverManager.getConnection("jdbc:mysql://localhost:3306/lpsw?zeroDateTimeBehavior=convertToNull", nome, senha);
             case JavaDB:
                 Class.forName("org.apache.derby.jdbc.ClientDriver");
-                return DriverManager.getConnection("jdbc:derby://localhost:1527/semana5", nome, senha);
+                return DriverManager.getConnection("jdbc:derby://localhost:1527/lpsw", nome, senha);
         }
         return null;
     }

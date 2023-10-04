@@ -26,11 +26,6 @@
         </style>
     </head>
     <body>
-        <%
-
-            String dbUsername = "Gabriel";
-            String dbPassword = "uvapassa";
-        %>
         <article class="container">
             <h1>Exercício de LDSW</h1>
             <h2>Semana 5 - 2023.3</h2>
