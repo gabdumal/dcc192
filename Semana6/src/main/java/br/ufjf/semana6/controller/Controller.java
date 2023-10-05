@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  *
@@ -48,6 +47,7 @@ public class Controller extends HttpServlet {
         String password = request.getParameter("password");
         String operacao = request.getParameter("operacao");
 
+//        System.out.println(operacao);
         // Verifica se está tentando logar
         session = request.getSession(true);
         if (operacao != null) {
@@ -81,18 +81,21 @@ public class Controller extends HttpServlet {
                             break;
                         case "welcome":
                             rd = request.getRequestDispatcher("welcome.jsp");
+                            System.out.println(rd);
                             rd.forward(request, response);
                             break;
                         case "erro_java":
                             throw new ServletException();
                         case "sair":
                             session.setAttribute("loggedIn", "FALSE");
+                            session.removeAttribute("msg");
                             rd = request.getRequestDispatcher("login.jsp");
                             rd.forward(request, response);
                             break;
                         default:
                             // se opcao inválida faz logoff e vai para tela de erro
                             session.setAttribute("loggedIn", "FALSE");
+                            session.removeAttribute("msg");
                             rd = request.getRequestDispatcher("erro.jsp");
                             rd.forward(request, response);
                     }

@@ -1,6 +1,6 @@
 <%--
-    Document   : erroHtml
-    Created on : Oct 3, 2023, 10:15:29 PM
+    Document   : erro.jsp
+    Created on : Oct 5, 2023, 4:38:07 PM
     Author     : gabdumal
 --%>
 
@@ -13,7 +13,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Ocorreu um erro de HTML!</h1>
+        <h1>Ocorreu um erro não especificado!</h1>
         <a href="./Controller">Voltar para o índice</a>
     </body>
 </html>
+

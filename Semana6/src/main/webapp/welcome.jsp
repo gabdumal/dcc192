@@ -1,17 +1,10 @@
-<%-- 
+<%--
     Document   : welcome
     Created on : Oct 3, 2023, 9:48:27 PM
     Author     : gabdumal
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    String loggedUser = (String) session.getAttribute("loggedUser");
-    if(loggedUser == null){
-        session.setAttribute("message", "A sessão expirou!");
-        response.sendRedirect("./index.jsp");
-    }
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,20 +13,31 @@
     </head>
     <body>
         <h1>Conteúdo</h1>
-        <h2>Semana 1</h2>
-        <h2>Semana 2</h2>
-        <h2>Semana 3</h2>
-        <h2>Semana 4</h2>        
-        <h2>Semana 5</h2>
-        <h2>Semana 6</h2>
+        <ul>
+            <li>Semana 1</li>
+            <li>Semana 2</li>
+            <li>Semana 3</li>
+            <li>Semana 4</li>
+            <li>Semana 5</li>
+            <li>Semana 6</li>
+        </ul>
 
-        <button onclick="logout()">
-            Sair do Sistema
-        </button>
+        <h2>Erros</h2>
+        <form action="./Controller" method="post">
+            <button>Erro de Java</button>
+            <input hidden name="operacao" value="erro_java" />
+        </form>
+        <button type="button" onclick="htmlError()">Erro de HTML</button>
+
+        <h2>Sair</h2>
+        <form action="./Controller" method="post">
+            <button>Sair do sistema</button>
+            <input hidden name="operacao" value="sair" />
+        </form>
 
         <script>
-            function logout() {
-                window.location.href = "./Sair";
+            function htmlError() {
+                window.location.href = "./HtmlError.jsp";
             }
         </script>
     </body>
