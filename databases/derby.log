@@ -1,20 +1,7 @@
-Tue Oct 03 21:45:29 BRT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Tue Oct 03 22:08:49 BRT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Oct 03 21:50:37 BRT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018a-f825-9c7d-000076de98f3 
-on database directory /home/gabdumal/dev/dcc192/databases/semana5 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
-Loaded from file:/home/gabdumal/.apps/derby/lib/derby.jar
-java.vendor=Red Hat, Inc.
-java.runtime.version=17.0.8+7
-user.dir=/home/gabdumal/.apps/derby
-os.name=Linux
-os.arch=amd64
-os.version=6.5.5-200.fc38.x86_64
-derby.system.home=/home/gabdumal/dev/dcc192/databases
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Oct 03 21:51:37 BRT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance e1734037-018a-f825-9c7d-000076de98f3 
+Tue Oct 03 22:55:35 BRT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018a-f83a-f999-000076de98f3 
 on database directory /home/gabdumal/dev/dcc192/databases/lpsw with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
 Loaded from file:/home/gabdumal/.apps/derby/lib/derby.jar
 java.vendor=Red Hat, Inc.
@@ -25,81 +12,3 @@ os.arch=amd64
 os.version=6.5.5-200.fc38.x86_64
 derby.system.home=/home/gabdumal/dev/dcc192/databases
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Oct 03 21:51:46 BRT 2023:
-Shutting down instance e1734037-018a-f825-9c7d-000076de98f3 on database directory /home/gabdumal/dev/dcc192/databases/lpsw with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
-Tue Oct 03 21:51:46 BRT 2023 Thread[DRDAConnThread_4,5,main] (DATABASE = lpsw), (DRDAID = {3}), Database 'lpsw' shutdown.
-----------------------------------------------------------------
-Tue Oct 03 21:51:49 BRT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance cead00d8-018a-f825-9c7d-000076de98f3 
-on database directory /home/gabdumal/dev/dcc192/databases/lpsw with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
-Loaded from file:/home/gabdumal/.apps/derby/lib/derby.jar
-java.vendor=Red Hat, Inc.
-java.runtime.version=17.0.8+7
-user.dir=/home/gabdumal/.apps/derby
-os.name=Linux
-os.arch=amd64
-os.version=6.5.5-200.fc38.x86_64
-derby.system.home=/home/gabdumal/dev/dcc192/databases
-Database Class Loader started - derby.database.classpath=''
-Tue Oct 03 21:58:35 BRT 2023 Thread[DRDAConnThread_2,5,main] (XID = 341), (SESSIONID = 2), (DATABASE = lpsw), (DRDAID = {6}), Cleanup action starting
-java.sql.SQLNonTransientConnectionException: Connection authentication failure occurred.  Reason: Invalid authentication..
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: ERROR 08004: Connection authentication failure occurred.  Reason: Invalid authentication..
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 21 more
-============= begin nested exception, level (1) ===========
-ERROR 08004: Connection authentication failure occurred.  Reason: Invalid authentication..
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-============= end nested exception, level (1) ===========
-Cleanup action completed
-Tue Oct 03 21:58:35 BRT 2023 Thread[DRDAConnThread_2,5,main] (DATABASE = lpsw), (DRDAID = {6}), Connection authentication failure occurred.  Reason: Invalid authentication..
-----------------------------------------------------------------
-Tue Oct 03 22:01:57 BRT 2023:
-Shutting down instance a816c00e-018a-f825-9c7d-000076de98f3 on database directory /home/gabdumal/dev/dcc192/databases/semana5 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
-Tue Oct 03 22:01:57 BRT 2023 Thread[DRDAConnThread_2,5,main] (DATABASE = semana5), (DRDAID = {10}), Database 'semana5' shutdown.
-----------------------------------------------------------------
-Tue Oct 03 22:03:55 BRT 2023: Shutting down Derby engine
