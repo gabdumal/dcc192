@@ -22,7 +22,7 @@ import java.io.StringWriter;
  *
  * @author gabdumal
  */
-public class Filter1 implements Filter {
+public class LoginPageFilter implements Filter {
 
     private static final boolean debug = true;
 
@@ -31,13 +31,13 @@ public class Filter1 implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public Filter1() {
+    public LoginPageFilter() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter1:DoBeforeProcessing");
+            log("LoginPageFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -65,7 +65,7 @@ public class Filter1 implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter1:DoAfterProcessing");
+            log("LoginPageFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -101,17 +101,16 @@ public class Filter1 implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("Filter1:doFilter()");
+            log("LoginPageFilter:doFilter()");
         }
 
         HttpSession session = null;
         session = ((HttpServletRequest) request).getSession(true);
         String loggedIn = (String) session.getAttribute("loggedIn");
-        if (loggedIn == null || loggedIn.equals("FALSE")) {
-            session.setAttribute("msg", "A sessão expirou! Por favor, faça login novamente.");
-            ((HttpServletResponse) response).sendRedirect("login.jsp");
+        if (loggedIn != null && loggedIn.equals("TRUE")) {
+            session.setAttribute("msg", "Você já está logado!");
+            ((HttpServletResponse) response).sendRedirect("welcome.jsp");
         } else {
-
             doBeforeProcessing(request, response);
 
             Throwable problem = null;
@@ -139,7 +138,6 @@ public class Filter1 implements Filter {
                 sendProcessingError(problem, response);
             }
         }
-
     }
 
     /**
@@ -171,7 +169,7 @@ public class Filter1 implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("Filter1:Initializing filter");
+                log("LoginPageFilter:Initializing filter");
             }
         }
     }
@@ -182,9 +180,9 @@ public class Filter1 implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("Filter1()");
+            return ("LoginPageFilter()");
         }
-        StringBuffer sb = new StringBuffer("Filter1(");
+        StringBuffer sb = new StringBuffer("LoginPageFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

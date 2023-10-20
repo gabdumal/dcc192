@@ -44,12 +44,44 @@ public class Listener1 implements ServletContextListener, HttpSessionListener, H
         System.out.println(">>> Session Destroyed");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         HttpSession session = se.getSession();
-        String loggedIn = (String) session.getAttribute("loggedIn");
-        if (loggedIn.equals("TRUE")) {
-            ServletContext context = session.getServletContext();
+        if (session != null) {
+            String loggedIn = (String) session.getAttribute("loggedIn");
+            if (loggedIn != null) {
+                if (loggedIn.equals("TRUE")) {
+                    ServletContext context = session.getServletContext();
+                    int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
+                    context.setAttribute("numberLoggedUsers", numberLoggedUsers - 1);
+                }
+            }
+        }
+    }
+
+    private void handleLoggedInChange(HttpSessionBindingEvent event, boolean firstAdded) {
+        System.out.println("+++++ Has attempted to login +++++");
+
+        HttpSession session = event.getSession();
+        ServletContext context = session.getServletContext();
+//        String usuario = (String) session.getAttribute("usuario");
+
+        String previousLoggedIn = "FALSE";
+        if (!firstAdded) {
+            previousLoggedIn = (String) event.getValue();
+        }
+
+        String currentLoggedIn = (String) session.getAttribute("loggedIn");
+
+        System.out.println("previousLoggedIn: " + previousLoggedIn);
+        System.out.println("currentLoggedIn: " + currentLoggedIn);
+//        System.out.println("usuario: " + usuario);
+
+        if (previousLoggedIn.equals("FALSE") && currentLoggedIn.equals("TRUE")) {
+            int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
+            context.setAttribute("numberLoggedUsers", numberLoggedUsers + 1);
+        } else if (previousLoggedIn.equals("TRUE") && currentLoggedIn.equals("FALSE")) {
             int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
             context.setAttribute("numberLoggedUsers", numberLoggedUsers - 1);
         }
+        System.out.println("===== Has attempted to login =====");
     }
 
     @Override
@@ -57,13 +89,14 @@ public class Listener1 implements ServletContextListener, HttpSessionListener, H
         System.out.println(">>> Attribute Added: " + event.getName());
         String addedAttributeName = event.getName();
         if (addedAttributeName.equals("loggedIn")) {
-            HttpSession session = event.getSession();
-            String currentLoggedIn = (String) session.getAttribute("loggedIn");
-            if (currentLoggedIn.equals("TRUE")) {
-                ServletContext context = session.getServletContext();
-                int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
-                context.setAttribute("numberLoggedUsers", numberLoggedUsers + 1);
-            }
+//            HttpSession session = event.getSession();
+//            String currentLoggedIn = (String) session.getAttribute("loggedIn");
+//            if (currentLoggedIn.equals("TRUE")) {
+//                ServletContext context = session.getServletContext();
+//                int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
+//                context.setAttribute("numberLoggedUsers", numberLoggedUsers + 1);
+//            }
+            this.handleLoggedInChange(event, true);
         }
     }
 
@@ -77,23 +110,7 @@ public class Listener1 implements ServletContextListener, HttpSessionListener, H
         System.out.println(">>> AttributeReplaced: " + event.getName());
         String addedAttributeName = event.getName();
         if (addedAttributeName.equals("loggedIn")) {
-            HttpSession session = event.getSession();
-            ServletContext context = session.getServletContext();
-
-            String previousLoggedIn = (String) event.getValue();
-            String currentLoggedIn = (String) session.getAttribute("loggedIn");
-//            String usuario = (String) session.getAttribute("usuario");
-//            System.out.println("previousLoggedIn: " + previousLoggedIn);
-//            System.out.println("currentLoggedIn: " + currentLoggedIn);
-//            System.out.println("usuario: " + usuario);
-
-            if (previousLoggedIn.equals("FALSE") && currentLoggedIn.equals("TRUE")) {
-                int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
-                context.setAttribute("numberLoggedUsers", numberLoggedUsers + 1);
-            } else if (previousLoggedIn.equals("TRUE") && currentLoggedIn.equals("FALSE")) {
-                int numberLoggedUsers = (int) (context.getAttribute("numberLoggedUsers"));
-                context.setAttribute("numberLoggedUsers", numberLoggedUsers - 1);
-            }
+            this.handleLoggedInChange(event, false);
         }
     }
 }
