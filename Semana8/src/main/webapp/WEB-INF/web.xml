@@ -38,7 +38,7 @@
         <url-pattern>/Controller</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>1</session-timeout>
+        <session-timeout>60</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
