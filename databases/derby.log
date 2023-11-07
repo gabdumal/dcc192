@@ -1,7 +1,7 @@
-Thu Oct 19 21:11:10 BRT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Tue Nov 07 10:34:56 BRT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Thu Oct 19 21:12:13 BRT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-4a6b-f11e-000076de98f3 
+Tue Nov 07 11:26:28 BRT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-a9fe-49af-000055a3744a 
 on database directory /home/gabdumal/dev/dcc192/databases/lpsw with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
 Loaded from file:/home/gabdumal/.apps/derby/lib/derby.jar
 java.vendor=Red Hat, Inc.
@@ -9,6 +9,6 @@ java.runtime.version=17.0.8+7
 user.dir=/home/gabdumal/.apps/derby
 os.name=Linux
 os.arch=amd64
-os.version=6.5.5-200.fc38.x86_64
+os.version=6.5.9-200.fc38.x86_64
 derby.system.home=/home/gabdumal/dev/dcc192/databases
 Database Class Loader started - derby.database.classpath=''
