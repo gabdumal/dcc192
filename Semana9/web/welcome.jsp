@@ -23,16 +23,61 @@
             <div class="d-flex flex-column gap-2">
                 <section class="container d-flex flex-column">
                     <h2>Conteúdo</h2>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Semana 1</li>
-                        <li class="list-group-item">Semana 2</li>
-                        <li class="list-group-item">Semana 3</li>
-                        <li class="list-group-item">Semana 4</li>
-                        <li class="list-group-item">Semana 5</li>
-                        <li class="list-group-item">Semana 6</li>
-                        <li class="list-group-item">Semana 7</li>
-                        <li class="list-group-item">Semana 8</li>
-                        <li class="list-group-item">Semana 9</li>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Semana 1</div>
+                                Introdução a Servlets
+                            </div>                      
+                        </li>
+                        <li class="list-group-item">                    
+                            <div class="ms-2 me-auto">                            
+                                <div class="fw-bold">Semana 2</div>
+                                Autenticação inicial
+                            </div>               
+                        </li>
+                        <li class="list-group-item">              
+                            <div class="ms-2 me-auto">                        
+                                <div class="fw-bold">Semana 3</div>
+                                Controle de Sessão
+                            </div>          
+                        </li>
+                        <li class="list-group-item">           
+                            <div class="ms-2 me-auto">                      
+                                <div class="fw-bold">Semana 4</div>
+                                JSPs
+                            </div>                     
+                        </li>
+                        <li class="list-group-item">          
+                            <div class="ms-2 me-auto">                        
+                                <div class="fw-bold">Semana 5</div>
+                                JavaDB e autenticação
+                            </div>            
+                        </li>
+                        <li class="list-group-item">     
+                            <div class="ms-2 me-auto">                         
+                                <div class="fw-bold">Semana 6</div>
+                                MVC e Filtros
+                            </div>                     
+                        </li>
+                        <li class="list-group-item">   
+                            <div class="ms-2 me-auto">                             
+                                <div class="fw-bold">Semana 7</div>
+                                Eventos e Listeners
+                            </div>                
+                        </li>
+                        <li class="list-group-item">    
+                            <div class="ms-2 me-auto">                              
+                                <div class="fw-bold">Semana 8</div>
+                                UI com Bootstrap
+                            </div>                   
+                        </li>
+                        <li class="list-group-item active" aria-current="true">   
+                            <div class="ms-2 me-auto">                             
+                                <div class="fw-bold">Semana 9</div>
+                                Java Persistence API
+                            </div>           
+                        </li>
                     </ul>
                 </section>
 

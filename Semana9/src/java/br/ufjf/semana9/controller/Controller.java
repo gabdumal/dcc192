@@ -6,6 +6,11 @@ package br.ufjf.semana9.controller;
 
 import br.ufjf.semana9.model.Usuario;
 import java.io.IOException;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +34,21 @@ public class Controller extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     public boolean login(String _user, String _pass) {
-//        UsuarioJpaController daoUsuario = new UsuarioJpaController(null, null);
-//        Usuario temp = daoUsuario.findUsuario(_user);
-//        if (temp == null || !(_pass.equals(temp.getSenha()))) {
-//            return false;
-//        }
-        return true;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("LPSWPU");
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createNamedQuery("Usuario.findByNome");
+        query.setParameter("nome", _user);
+        List<Usuario> usersList = query.getResultList();
+        if (usersList.size() <= 0) {
+            return false;
+        } else {
+            Usuario user = usersList.get(0);
+            if (user == null || !(_pass.equals(user.getSenha()))) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +60,6 @@ public class Controller extends HttpServlet {
         String password = request.getParameter("password");
         String operacao = request.getParameter("operacao");
 
-//        System.out.println(operacao);
         // Verifica se está tentando logar
         session = request.getSession(true);
         if (operacao != null) {
@@ -95,8 +108,9 @@ public class Controller extends HttpServlet {
                             // se opcao inválida faz logoff e vai para tela de erro
                             session.setAttribute("loggedIn", "FALSE");
                             session.removeAttribute("msg");
-                            rd = request.getRequestDispatcher("erro.jsp");
+                            rd = request.getRequestDispatcher("erro/erro.jsp");
                             rd.forward(request, response);
+                            break;
                     }
                 }
             }
